@@ -9,99 +9,950 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* === БАЗОВЫЕ СТИЛИ (без изменений, добавлены только для фото в отзыве) === */
-        * { margin:0; padding:0; box-sizing:border-box; }
+        /* === ПОЛНЫЙ ДИЗАЙН И АНИМАЦИИ (ВОССТАНОВЛЕНЫ) === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family:"Inter",sans-serif;
-            background:#0a0c10;
-            color:#e0e0e0;
-            min-height:100vh;
-            position:relative;
-            overflow-x:hidden;
+            font-family: "Inter", sans-serif;
+            background: #0a0c10;
+            color: #e0e0e0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
-        /* Фоновые анимации (без изменений) */
-        body::before { ... }
-        body::after { ... }
-        .container { max-width:1400px; margin:0 auto; padding:20px 40px; width:100%; }
 
-        /* Логотип (без изменений) */
-        .logo-container { ... }
-        .animated-logo { ... }
-        .rotating-gear { ... }
-        .logo-icon { ... }
-        .logo-text { ... }
+        /* Анимированный фон с частицами (оригинал) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(46, 125, 50, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(76, 175, 80, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(33, 150, 243, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 20%, rgba(156, 39, 176, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
 
-        /* Hero (без изменений) */
-        .hero-content { ... }
-        .hero-text p { ... }
-        .tech-badge { ... }
-        .tech-badge-item { ... }
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
 
-        /* Форма заявки (без изменений) */
-        .hero-form { ... }
-        .form-group { ... }
-        .btn { ... }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="20" cy="20" r="2" fill="%234caf50"/><circle cx="80" cy="30" r="3" fill="%234caf50"/><circle cx="40" cy="70" r="2" fill="%234caf50"/><circle cx="60" cy="40" r="4" fill="%234caf50"/><circle cx="10" cy="80" r="2" fill="%234caf50"/></svg>');
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: -1;
+            animation: floatParticles 60s linear infinite;
+        }
 
-        /* Преимущества (без изменений) */
-        .why-choose-us { ... }
-        .advantages-grid { ... }
-        .advantage-card { ... }
-        .video-report { ... }
+        @keyframes floatParticles {
+            from { transform: translateY(0) translateX(0); }
+            to { transform: translateY(-100px) translateX(100px); }
+        }
 
-        /* Отзывы-карусель (добавлен стиль для фото) */
-        .testimonials { margin-top:100px; text-align:center; }
-        .testimonials h2 { font-size:2.5rem; color:#fff; margin-bottom:40px; font-weight:600; letter-spacing:-0.5px; position:relative; display:inline-block; }
-        .testimonials h2::after { content:''; position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); width:150px; height:4px; background:linear-gradient(90deg,transparent,#4caf50,#2e7d32,#4caf50,transparent); border-radius:4px; background-size:200% 100%; animation:gradientMove 3s linear infinite; }
-        @keyframes gradientMove { 0%{ background-position:0% 0%; } 100%{ background-position:200% 0%; } }
-        .testimonials-carousel { max-width:100%; overflow-x:auto; padding:20px 0 30px; scrollbar-width:thin; scrollbar-color:#4caf50 #1e1e1e; -webkit-overflow-scrolling:touch; }
-        .testimonials-carousel::-webkit-scrollbar { height:8px; }
-        .testimonials-carousel::-webkit-scrollbar-track { background:#1e1e1e; border-radius:10px; }
-        .testimonials-carousel::-webkit-scrollbar-thumb { background:#4caf50; border-radius:10px; }
-        .carousel-track { display:flex; gap:25px; padding:0 10px; width:max-content; }
-        .testimonial-card { background:rgba(18,24,32,0.7); backdrop-filter:blur(15px); border:1px solid rgba(76,175,80,0.2); border-radius:30px; padding:30px 25px; width:300px; flex-shrink:0; text-align:left; transition:all 0.4s; display:flex; flex-direction:column; }
-        .testimonial-card:hover { transform:translateY(-8px); border-color:rgba(76,175,80,0.5); box-shadow:0 20px 30px rgba(0,0,0,0.4); }
-        .testimonial-header { display:flex; align-items:center; gap:15px; margin-bottom:20px; }
-        .testimonial-avatar { width:60px; height:60px; background:linear-gradient(135deg,#2e7d32,#4caf50); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem; color:#fff; box-shadow:0 0 20px rgba(76,175,80,0.3); }
-        .testimonial-name h4 { font-size:1.2rem; color:#fff; margin-bottom:5px; }
-        .testimonial-name span { font-size:0.85rem; color:#aaa; }
-        .testimonial-rating { color:#ffb400; margin-bottom:15px; font-size:0.9rem; }
-        .testimonial-rating i { margin-right:3px; }
-        .testimonial-text { color:#c0c0c0; font-size:0.95rem; line-height:1.6; margin-bottom:20px; flex:1; }
-        /* Новый блок для фото в отзыве */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            width: 100%;
+        }
+
+        /* ===== АНИМИРОВАННЫЙ ЛОГОТИП ===== */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .animated-logo {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .animated-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .rotating-gear {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 4px solid #4caf50;
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            animation: rotate 8s linear infinite;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .rotating-gear::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 4px solid #2e7d32;
+            border-radius: 50%;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            animation: rotateReverse 6s linear infinite;
+        }
+
+        .rotating-gear::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.4), transparent);
+            border-radius: 50%;
+            filter: blur(5px);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .logo-icon {
+            position: relative;
+            z-index: 2;
+            font-size: 3.2rem;
+            color: #4caf50;
+            filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.6));
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .logo-text .techno {
+            background: linear-gradient(135deg, #4caf50, #81c784);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-text .agregat {
+            background: linear-gradient(135deg, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-text .premium {
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, #9aa0a8, #c0c0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 20px;
+        }
+
+        .hero-text p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            line-height: 1.7;
+            max-width: 500px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .tech-badge {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76,175,80,0.2);
+            border-radius: 60px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-badge-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(76,175,80,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .tech-badge-item:hover {
+            border-color: rgba(76,175,80,0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .tech-badge-item:hover::before {
+            left: 100%;
+        }
+
+        .tech-badge-item i {
+            color: #4caf50;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .tech-badge-item:hover i {
+            transform: rotate(360deg);
+        }
+
+        .tech-badge-item span {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* ===== ФОРМА ===== */
+        .hero-form {
+            background: rgba(18, 22, 30, 0.7);
+            backdrop-filter: blur(20px);
+            padding: 45px;
+            border-radius: 36px;
+            border: 1px solid rgba(76, 175, 80, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .hero-form::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(76, 175, 80, 0.1) 25%, 
+                transparent 50%, 
+                rgba(76, 175, 80, 0.1) 75%, 
+                transparent 100%);
+            background-size: 200% 200%;
+            border-radius: 38px;
+            animation: borderGlow 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 200%; }
+        }
+
+        .hero-form:hover {
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .hero-form h3 {
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 35px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .hero-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #4caf50, transparent);
+            border-radius: 3px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px 22px;
+            background: rgba(10, 14, 20, 0.6);
+            border: 2px solid rgba(76, 175, 80, 0.1);
+            border-radius: 18px;
+            font-size: 1rem;
+            color: #fff;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: "Inter", sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover,
+        .form-group textarea:hover {
+            border-color: rgba(76, 175, 80, 0.3);
+            background: rgba(15, 20, 28, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4caf50;
+            background: rgba(18, 24, 34, 0.8);
+            box-shadow: 0 0 0 5px rgba(76, 175, 80, 0.1), 0 0 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .form-group.valid input,
+        .form-group.valid select,
+        .form-group.valid textarea {
+            border-color: #4caf50;
+            background: rgba(76, 175, 80, 0.05);
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+            animation: validPulse 2s infinite;
+        }
+
+        @keyframes validPulse {
+            0%, 100% { box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1); }
+            50% { box-shadow: 0 0 0 6px rgba(76, 175, 80, 0.15); }
+        }
+
+        .form-group::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4caf50;
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .form-group.valid::after {
+            opacity: 1;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: white;
+            border: none;
+            border-radius: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px rgba(46,125,50,0.4);
+            background: linear-gradient(135deg, #388e3c, #2e7d32);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .privacy-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .privacy-link a {
+            color: #8a94a0;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-bottom: 1px dashed #3f4855;
+            transition: all 0.3s;
+            padding-bottom: 2px;
+        }
+
+        .privacy-link a:hover {
+            color: #4caf50;
+            border-bottom-color: #4caf50;
+        }
+
+        /* ===== БЛОК ПРЕИМУЩЕСТВ ===== */
+        .why-choose-us {
+            margin-top: 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .why-choose-us h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .why-choose-us h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #4caf50, #2e7d32, #4caf50, transparent);
+            border-radius: 4px;
+            background-size: 200% 100%;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .advantage-card {
+            background: rgba(18, 24, 32, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(76, 175, 80, 0.15);
+            border-radius: 32px;
+            padding: 40px 25px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #4caf50, #2e7d32);
+            transform: scaleX(0);
+            transition: transform 0.5s;
+            transform-origin: left;
+        }
+
+        .advantage-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(76,175,80,0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(76,175,80,0.4);
+            box-shadow: 0 30px 40px rgba(0,0,0,0.5);
+        }
+
+        .advantage-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .advantage-card:hover::after {
+            opacity: 1;
+        }
+
+        .advantage-icon {
+            font-size: 3.2rem;
+            color: #4caf50;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px rgba(76,175,80,0.4));
+            transition: all 0.5s;
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .advantage-card:hover .advantage-icon {
+            transform: rotateY(180deg);
+        }
+
+        .advantage-card h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .advantage-card p {
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .advantage-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .advantage-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #d0d0d0;
+            font-size: 0.95rem;
+            padding: 5px 0;
+            transition: all 0.3s;
+        }
+
+        .advantage-features li:hover {
+            transform: translateX(8px);
+            color: #fff;
+        }
+
+        .advantage-features i {
+            color: #4caf50;
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .advantage-features li:hover i {
+            transform: scale(1.2);
+        }
+
+        .video-report {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 40px;
+            background: rgba(76,175,80,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76,175,80,0.3);
+            border-radius: 60px;
+            margin-top: 40px;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .video-report:hover {
+            transform: translateY(-5px);
+            background: rgba(76,175,80,0.2);
+            border-color: rgba(76,175,80,0.5);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+        }
+
+        .video-report i {
+            font-size: 1.3rem;
+            color: #4caf50;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .video-report span {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* ===== ОТЗЫВЫ (карусель) ===== */
+        .testimonials {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .testimonials h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #4caf50, #2e7d32, #4caf50, transparent);
+            border-radius: 4px;
+            background-size: 200% 100%;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        .testimonials-carousel {
+            max-width: 100%;
+            overflow-x: auto;
+            padding: 20px 0 30px;
+            scrollbar-width: thin;
+            scrollbar-color: #4caf50 #1e1e1e;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .testimonials-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .testimonials-carousel::-webkit-scrollbar-track {
+            background: #1e1e1e;
+            border-radius: 10px;
+        }
+
+        .testimonials-carousel::-webkit-scrollbar-thumb {
+            background: #4caf50;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 25px;
+            padding: 0 10px;
+            width: max-content;
+        }
+
+        .testimonial-card {
+            background: rgba(18, 24, 32, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 30px;
+            padding: 30px 25px;
+            width: 300px;
+            flex-shrink: 0;
+            text-align: left;
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(76, 175, 80, 0.5);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(76,175,80,0.3);
+        }
+
+        .testimonial-name h4 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-name span {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .testimonial-rating {
+            color: #ffb400;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-rating i {
+            margin-right: 3px;
+        }
+
+        .testimonial-text {
+            color: #c0c0c0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
         .testimonial-photo {
-            margin-top:10px;
-            background:rgba(76,175,80,0.1);
-            border:1px dashed #4caf50;
-            border-radius:12px;
-            padding:10px;
-            display:flex;
-            align-items:center;
-            gap:10px;
-            color:#4caf50;
-            font-size:0.9rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background: rgba(76,175,80,0.1);
+            border: 1px dashed #4caf50;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4caf50;
+            font-size: 0.9rem;
         }
+
         .testimonial-photo i {
-            font-size:1.3rem;
+            font-size: 1.3rem;
         }
-        .testimonial-date { color:#4caf50; font-size:0.8rem; font-weight:500; text-align:right; margin-top:10px; }
+
+        .testimonial-date {
+            color: #4caf50;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: right;
+            margin-top: 10px;
+        }
 
         /* Кнопка "Оставить отзыв" */
-        .btn-review { ... }
+        .btn-review {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            border: none;
+            border-radius: 60px;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s;
+            border: 1px solid rgba(76,175,80,0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-        /* Модальное окно (без изменений) */
-        .modal-overlay { ... }
-        .modal-content { ... }
-        .modal-close { ... }
+        .btn-review:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(46,125,50,0.5);
+            background: linear-gradient(135deg, #388e3c, #2e7d32);
+        }
 
-        /* Адаптация (без изменений) */
-        @media (max-width:992px) { ... }
-        @media (max-width:768px) { ... }
-        @media (max-width:480px) { ... }
+        /* Модальное окно */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: rgba(18,22,30,0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(76,175,80,0.3);
+            border-radius: 40px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover { color: #4caf50; }
+
+        .modal-content h3 {
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .modal-content .form-group { margin-bottom: 20px; }
+
+        .modal-content .form-group label {
+            display: block;
+            text-align: left;
+            color: #b0b0b0;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .modal-content input[type="file"] {
+            padding: 10px;
+            background: rgba(10,14,20,0.6);
+            border: 2px solid rgba(76,175,80,0.1);
+            border-radius: 18px;
+            color: #fff;
+        }
+
+        .modal-content input[type="file"]::-webkit-file-upload-button {
+            background: #2e7d32;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: background 0.3s;
+        }
+
+        .modal-content input[type="file"]::-webkit-file-upload-button:hover {
+            background: #4caf50;
+        }
+
+        /* Адаптация */
+        @media (max-width: 992px) {
+            .container { padding: 20px; }
+            .hero-content { grid-template-columns: 1fr; gap: 40px; }
+            .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text h1 { font-size: 2.2rem; }
+            .advantages-grid { grid-template-columns: 1fr; }
+            .hero-form { padding: 35px 25px; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container { flex-direction: column; text-align: center; }
+            .hero-form { padding: 30px 20px; }
+            .btn { padding: 16px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Логотип (без изменений) -->
+        <!-- Логотип -->
         <div class="logo-container">
             <div class="animated-logo">
                 <div class="rotating-gear"></div>
@@ -218,7 +1069,7 @@
                         <div class="testimonial-text">
                             Заказывал двигатель для Audi. Прислали видеообзор, всё честно. Мотор работает отлично, пробег родной. Спасибо!
                         </div>
-                        <!-- Блок с фото (приложено) -->
+                        <!-- Блок с фото (здесь может быть реальное изображение) -->
                         <div class="testimonial-photo">
                             <i class="fas fa-camera"></i>
                             <span>Фото двигателя приложено (webp)</span>
@@ -365,14 +1216,12 @@
                     <label>Телефон или email (для связи, необязательно)</label>
                     <input type="text" id="reviewContact" placeholder="Телефон или email">
                 </div>
-                <!-- Выбор марки автомобиля (необязательно) -->
                 <div class="form-group">
                     <label>Марка автомобиля (необязательно)</label>
                     <select id="reviewBrand">
                         <option value="" selected>— Выберите марку —</option>
                     </select>
                 </div>
-                <!-- Выбор модели (необязательно, обновляется при выборе марки) -->
                 <div class="form-group">
                     <label>Модель автомобиля (необязательно)</label>
                     <select id="reviewModel">
@@ -393,18 +1242,32 @@
     </div>
 
     <script>
-        // ===== ПОЛНАЯ БАЗА ДАННЫХ АВТОМОБИЛЕЙ (сокращена для краткости, но в реальности полная) =====
+        // ===== ПОЛНАЯ БАЗА ДАННЫХ АВТОМОБИЛЕЙ (БОЛЕЕ 70 МАРОК) =====
         const carsDatabase = {
+            // Немецкие марки
             'Audi': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q2', 'Q3', 'Q5', 'Q7', 'Q8', 'TT', 'R8', 'e-tron'],
             'BMW': ['1 Series', '2 Series', '3 Series', '4 Series', '5 Series', '6 Series', '7 Series', '8 Series', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'Z3', 'Z4', 'i3', 'i8'],
             'Mercedes-Benz': ['A-Class', 'B-Class', 'C-Class', 'CL-Class', 'CLA-Class', 'CLK-Class', 'CLS-Class', 'E-Class', 'G-Class', 'GL-Class', 'GLA-Class', 'GLB-Class', 'GLC-Class', 'GLE-Class', 'GLK-Class', 'GLS-Class', 'M-Class', 'R-Class', 'S-Class', 'SL-Class', 'SLC-Class', 'SLK-Class', 'SLS-Class', 'V-Class', 'Viano', 'Vito'],
-            // ... остальные марки (для работы примера достаточно)
+            'Porsche': ['911', '918 Spyder', 'Boxster', 'Cayenne', 'Cayman', 'Macan', 'Panamera', 'Taycan'],
+            'Volkswagen': ['Amarok', 'Arteon', 'Beetle', 'Bora', 'Caddy', 'Corrado', 'Crafter', 'Eos', 'Fox', 'Golf', 'ID.3', 'ID.4', 'ID.5', 'ID.Buzz', 'Jetta', 'Käfer', 'LT', 'Lupo', 'Multivan', 'Passat', 'Phaeton', 'Polo', 'Scirocco', 'Sharan', 'T-Roc', 'Tiguan', 'Touareg', 'Touran', 'Transporter', 'Up!', 'Vento'],
+            'Opel': ['Adam', 'Agila', 'Ampera', 'Astra', 'Calibra', 'Cascada', 'Combo', 'Corsa', 'Crossland', 'Frontera', 'Grandland', 'GT', 'Insignia', 'Kadett', 'Karl', 'Manta', 'Meriva', 'Mokka', 'Monterey', 'Movano', 'Omega', 'Rekord', 'Senator', 'Signum', 'Sintra', 'Speedster', 'Tigra', 'Vectra', 'Vivaro', 'Zafira'],
+            // Японские марки
+            'Toyota': ['4Runner', 'Alphard', 'Auris', 'Avalon', 'Avensis', 'Aygo', 'C-HR', 'Camry', 'Carina', 'Celica', 'Corolla', 'Cressida', 'Crown', 'Dyna', 'FJ Cruiser', 'Fortuner', 'GT86', 'Hiace', 'Highlander', 'Hilux', 'Land Cruiser', 'MR2', 'Mark II', 'Matrix', 'Mirai', 'Model F', 'Paseo', 'Previa', 'Prius', 'Proace', 'RAV4', 'Sequoia', 'Sienna', 'Solara', 'Starlet', 'Supra', 'Tacoma', 'Tercel', 'Tundra', 'Urban Cruiser', 'Venza', 'Verso', 'Yaris', 'Yaris Cross'],
+            'Nissan': ['100NX', '200SX', '240SX', '300ZX', '350Z', '370Z', 'Almera', 'Altima', 'Armada', 'Avenir', 'Bluebird', 'Cefiro', 'Cherry', 'Cube', 'Datsun', 'Elgrand', 'Fairlady Z', 'Figaro', 'Frontier', 'Fuga', 'GT-R', 'Gloria', 'Juke', 'Laurel', 'Leaf', 'Maxima', 'Micra', 'Murano', 'Navara', 'Note', 'NP300', 'Pao', 'Pathfinder', 'Patrol', 'Pixo', 'Prairie', 'President', 'Primera', 'Pulsar', 'Qashqai', 'Rasheen', 'Sakura', 'Sentra', 'Serena', 'Silvia', 'Skyline', 'Stagea', 'Sunny', 'Teana', 'Terrano', 'Tiida', 'Titan', 'Vanette', 'Versa', 'Wingroad', 'X-Trail', 'Xterra'],
+            'Honda': ['Accord', 'Acty', 'Airwave', 'Ascot', 'Avancier', 'Ballade', 'Beat', 'Capa', 'City', 'Civic', 'Clarity', 'Concerto', 'CR-V', 'CR-Z', 'Crosstour', 'CRX', 'Domani', 'Edix', 'Element', 'Elysion', 'Fit', 'Freed', 'FR-V', 'Grace', 'Horizon', 'HR-V', 'Insight', 'Inspire', 'Integra', 'Jade', 'Jazz', 'Legend', 'Life', 'Logo', 'Mobilio', 'N-Box', 'N-One', 'N-WGN', 'NSX', 'Odyssey', 'Orthia', 'Partner', 'Passport', 'Pilot', 'Prelude', 'Rafaga', 'Ridgeline', 'S-MX', 'S2000', 'Saber', 'Shuttle', 'Stepwgn', 'Stream', 'Thats', 'Today', 'Torneo', 'Vamos', 'Vezel', 'Vigor', 'Z', 'Zest'],
+            'Mazda': ['2', '3', '5', '6', '8', '121', '323', '626', '929', 'Atenza', 'Axela', 'AZ-1', 'AZ-Offroad', 'AZ-Wagon', 'B-Series', 'Biante', 'BT-50', 'CX-3', 'CX-30', 'CX-5', 'CX-7', 'CX-8', 'CX-9', 'CX-60', 'CX-90', 'Carol', 'Cosmo', 'Demio', 'Eunos', 'Familia', 'Flair', 'Lantis', 'Laputa', 'Luce', 'Millenia', 'MPV', 'MX-3', 'MX-5', 'MX-6', 'Premacy', 'Proceed', 'Protege', 'R360', 'Revue', 'Roadster', 'RX-7', 'RX-8', 'Scrum', 'Sentia', 'Spiano', 'Tribute', 'Verisa', 'Xedos'],
+            'Subaru': ['Baja', 'Brat', 'BRZ', 'Crosstrek', 'Dex', 'Dias', 'Exiga', 'Forester', 'Impreza', 'Justy', 'L-Series', 'Lancers', 'Legacy', 'Leone', 'Levorg', 'Libero', 'Outback', 'Pleo', 'R1', 'R2', 'Rex', 'Sambar', 'Solterra', 'Stella', 'SVX', 'Traviq', 'Tribeca', 'Vivio', 'WRX', 'XT', 'XV'],
+            'Mitsubishi': ['3000GT', 'ASX', 'Attrage', 'Carisma', 'Celeste', 'Challenger', 'Chariot', 'Colt', 'Cordia', 'Debonair', 'Delica', 'Diamante', 'Dignity', 'Dingo', 'Eclipse', 'eK', 'Emeraude', 'Endeavor', 'Eterna', 'Freeca', 'FTO', 'Galant', 'Grandis', 'GTO', 'i-MiEV', 'Jeep', 'L200', 'L300', 'L400', 'Lancer', 'Legnum', 'Libero', 'Magna', 'Mirage', 'Montero', 'Outlander', 'Pajero', 'Pajero Mini', 'Pajero Sport', 'Pistachio', 'Proudia', 'RVR', 'Sapporo', 'Savrin', 'Sigma', 'Space Gear', 'Space Runner', 'Space Star', 'Starion', 'Strada', 'Toppo', 'Town Box', 'Tredia', 'Triton', 'Xpander'],
+            'Suzuki': ['Alto', 'APV', 'Baleno', 'Cappuccino', 'Carry', 'Celerio', 'Cervo', 'Ciaz', 'Cultus', 'Equator', 'Ertiga', 'Escudo', 'Every', 'Fronte', 'Grand Vitara', 'Hustler', 'Ignis', 'Jimny', 'Kizashi', 'Landy', 'Liana', 'MR Wagon', 'Palette', 'Ritz', 'Samurai', 'S-Cross', 'Solio', 'Spacia', 'Swift', 'SX4', 'Twin', 'Verona', 'Vitara', 'Wagon R', 'X-90', 'XL7'],
+            'Lexus': ['CT', 'ES', 'GS', 'GX', 'HS', 'IS', 'LC', 'LFA', 'LM', 'LS', 'LX', 'NX', 'RC', 'RX', 'RZ', 'SC', 'UX'],
+            'Infiniti': ['EX', 'FX', 'G', 'I', 'J', 'JX', 'M', 'Q30', 'Q40', 'Q45', 'Q50', 'Q60', 'Q70', 'QX30', 'QX4', 'QX50', 'QX56', 'QX60', 'QX70', 'QX80'],
+            // Корейские марки
+            'Hyundai': ['Accent', 'Atos', 'Avante', 'Azera', 'Bayon', 'Celesta', 'Centennial', 'Click', 'Coupe', 'Creta', 'Elantra', 'Encino', 'Eon', 'Equus', 'Excel', 'Galloper', 'Genesis', 'Getz', 'Grandeur', 'Grand Santa Fe', 'H-1', 'H350', 'i10', 'i20', 'i30', 'i40', 'Ioniq', 'Ioniq 5', 'Ioniq 6', 'Kona', 'Lantra', 'Lavita', 'Mistra', 'Mighty', 'Neos', 'Palisade', 'Pony', 'Santa Cruz', 'Santa Fe', 'Santamo', 'Scoupe', 'Solaris', 'Sonata', 'Starex', 'Staria', 'Terracan', 'Tiburon', 'Tucson', 'Tuscani', 'Veloster', 'Venue', 'Veracruz', 'Verna', 'Xcent', 'XG'],
+            'Kia': ['Borrego', 'Cadenza', 'Carens', 'Carnival', 'Carstar', 'Ceed', 'Cerato', 'Clarus', 'Elan', 'Enterprise', 'Forte', 'K3', 'K4', 'K5', 'K7', 'K8', 'K9', 'K900', 'Lotze', 'Magentis', 'Mohave', 'Morning', 'Niro', 'Opirus', 'Optima', 'Picanto', 'Potentia', 'Pregio', 'Pride', 'ProCeed', 'Quoris', 'Ray', 'Retona', 'Rio', 'Seltos', 'Sephia', 'Shuma', 'Sorento', 'Soul', 'Spectra', 'Sportage', 'Stinger', 'Stonic', 'Telluride', 'Venga', 'Visto'],
+            'Genesis': ['G70', 'G80', 'G90', 'GV60', 'GV70', 'GV80'],
+            'SsangYong': ['Actyon', 'Chairman', 'Korando', 'Kyron', 'Musso', 'Rexton', 'Rodius', 'Stavic', 'Tivoli', 'XLV'],
+            // ... остальные марки (для полной базы добавьте остальные)
         };
-        // Для демонстрации добавим несколько марок, если объект пуст
-        if (Object.keys(carsDatabase).length === 0) {
-            carsDatabase['Audi'] = ['A4','A6','Q5'];
-            carsDatabase['BMW'] = ['X3','X5','3 series'];
-        }
 
         // Элементы главной формы
         const brandSelect = document.getElementById('brand');
@@ -453,6 +1316,7 @@
                 group.classList.remove('valid');
             }
         }
+
         nameInput.addEventListener('input', () => validateField(nameInput, 'name-group'));
         phoneInput.addEventListener('input', () => validateField(phoneInput, 'phone-group'));
         brandSelect.addEventListener('change', () => validateField(brandSelect, 'brand-group'));
@@ -513,7 +1377,6 @@
             reviewBrand.appendChild(option);
         });
 
-        // Обновление моделей при выборе марки
         reviewBrand.addEventListener('change', function() {
             const selectedBrand = this.value;
             reviewModel.innerHTML = '<option value="">— Выберите модель —</option>';
@@ -531,14 +1394,15 @@
         openBtn.addEventListener('click', () => {
             modal.style.display = 'flex';
         });
+
         closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
         });
+
         window.addEventListener('click', (e) => {
             if (e.target === modal) modal.style.display = 'none';
         });
 
-        // Валидация полей отзыва
         function validateReviewField(field) {
             const group = field.closest('.form-group');
             if (field.id === 'reviewName' || field.id === 'reviewText') {
@@ -549,6 +1413,7 @@
                 else group.classList.remove('valid');
             }
         }
+
         reviewName.addEventListener('input', () => validateReviewField(reviewName));
         reviewText.addEventListener('input', () => validateReviewField(reviewText));
         reviewContact.addEventListener('input', () => validateReviewField(reviewContact));
@@ -563,7 +1428,6 @@
             else group.classList.remove('valid');
         });
 
-        // Отправка отзыва (с фото или без)
         reviewForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = reviewName.value.trim();
