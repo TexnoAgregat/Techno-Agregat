@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* === ПОЛНЫЙ ДИЗАЙН И АНИМАЦИИ (ВОССТАНОВЛЕНЫ) === */
+        /* === ПОЛНЫЙ ДИЗАЙН И АНИМАЦИИ === */
         * {
             margin: 0;
             padding: 0;
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Анимированный фон с частицами (оригинал) */
+        /* Анимированный фон */
         body::before {
             content: '';
             position: fixed;
@@ -74,7 +74,7 @@
             width: 100%;
         }
 
-        /* ===== АНИМИРОВАННЫЙ ЛОГОТИП ===== */
+        /* ===== ЛОГОТИП ===== */
         .logo-container {
             display: flex;
             align-items: center;
@@ -474,7 +474,7 @@
             border-bottom-color: #4caf50;
         }
 
-        /* ===== БЛОК ПРЕИМУЩЕСТВ ===== */
+        /* ===== ПРЕИМУЩЕСТВА ===== */
         .why-choose-us {
             margin-top: 100px;
             text-align: center;
@@ -799,24 +799,7 @@
             flex: 1;
         }
 
-        .testimonial-photo {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background: rgba(76,175,80,0.1);
-            border: 1px dashed #4caf50;
-            border-radius: 12px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #4caf50;
-            font-size: 0.9rem;
-        }
-
-        .testimonial-photo i {
-            font-size: 1.3rem;
-        }
-
+        /* В первом отзыве фото будет вставлено отдельно */
         .testimonial-date {
             color: #4caf50;
             font-size: 0.8rem;
@@ -1054,7 +1037,7 @@
             <h2>Отзывы наших клиентов</h2>
             <div class="testimonials-carousel">
                 <div class="carousel-track">
-                    <!-- Отзыв 1: Дмитрий С., Audi Q5 (с фото) -->
+                    <!-- Отзыв 1: Дмитрий С., Audi Q5 (с реальным фото) -->
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1069,11 +1052,10 @@
                         <div class="testimonial-text">
                             Заказывал двигатель для Audi. Прислали видеообзор, всё честно. Мотор работает отлично, пробег родной. Спасибо!
                         </div>
-                        <!-- Блок с фото (здесь может быть реальное изображение) -->
-                        <div class="testimonial-photo">
-                            <i class="fas fa-camera"></i>
-                            <span>Фото двигателя приложено (webp)</span>
-                        </div>
+                        <!-- Реальное фото двигателя (файл engine_audi_q5.webp должен лежать в той же папке) -->
+                        <img src="engine_audi_q5.webp" 
+                             alt="Фото двигателя Audi Q5" 
+                             style="width:100%; border-radius:12px; margin-top:10px; border:1px solid #4caf50;">
                         <div class="testimonial-date">12.03.2025</div>
                     </div>
                     <!-- Отзыв 2 -->
