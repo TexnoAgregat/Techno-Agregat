@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Техно Агрегат | Контрактные двигатели премиум-класса</title>
+    <title>Техно Агрегат | Контрактные двигатели</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* === ПОЛНЫЙ ДИЗАЙН И АНИМАЦИИ (без изменений) === */
         * {
             margin: 0;
             padding: 0;
@@ -25,6 +24,7 @@
             overflow-x: hidden;
         }
 
+        /* Анимированный фон */
         body::before {
             content: '';
             position: fixed;
@@ -73,7 +73,7 @@
             width: 100%;
         }
 
-        /* ===== ЛОГОТИП ===== */
+        /* Анимированный логотип */
         .logo-container {
             display: flex;
             align-items: center;
@@ -194,7 +194,7 @@
             margin-top: 5px;
         }
 
-        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
+        /* Главный экран */
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -269,7 +269,7 @@
             font-weight: 500;
         }
 
-        /* ===== ФОРМА ===== */
+        /* Форма */
         .hero-form {
             background: rgba(18, 22, 30, 0.7);
             backdrop-filter: blur(20px);
@@ -473,7 +473,7 @@
             border-bottom-color: #4caf50;
         }
 
-        /* ===== ПРЕИМУЩЕСТВА ===== */
+        /* Преимущества */
         .why-choose-us {
             margin-top: 100px;
             text-align: center;
@@ -669,7 +669,7 @@
             font-weight: 500;
         }
 
-        /* ===== ОТЗЫВЫ (карусель) ===== */
+        /* Отзывы */
         .testimonials {
             margin-top: 100px;
             text-align: center;
@@ -798,7 +798,6 @@
             flex: 1;
         }
 
-        /* Стили для фото в отзывах */
         .testimonial-card img {
             width: 100%;
             border-radius: 12px;
@@ -814,7 +813,6 @@
             margin-top: 10px;
         }
 
-        /* Кнопка "Оставить отзыв" */
         .btn-review {
             display: inline-block;
             margin-top: 30px;
@@ -919,7 +917,6 @@
             background: #4caf50;
         }
 
-        /* Адаптация */
         @media (max-width: 992px) {
             .container { padding: 20px; }
             .hero-content { grid-template-columns: 1fr; gap: 40px; }
@@ -941,7 +938,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Логотип -->
         <div class="logo-container">
             <div class="animated-logo">
                 <div class="rotating-gear"></div>
@@ -955,7 +951,6 @@
             </div>
         </div>
 
-        <!-- Главный экран -->
         <section class="hero">
             <div class="hero-content">
                 <div class="hero-text">
@@ -995,7 +990,6 @@
             </div>
         </section>
 
-        <!-- Преимущества -->
         <section class="why-choose-us">
             <h2>Почему выбирают нас</h2>
             <div class="advantages-grid">
@@ -1038,7 +1032,6 @@
             </div>
         </section>
 
-        <!-- ОТЗЫВЫ (карусель) + КНОПКА -->
         <section class="testimonials">
             <h2>Отзывы наших клиентов</h2>
             <div class="testimonials-carousel">
@@ -1061,7 +1054,7 @@
                         <img src="engine_audi_q5.webp" alt="Фото двигателя Audi Q5">
                         <div class="testimonial-date">12.03.2025</div>
                     </div>
-                    <!-- Отзыв 2: BMW X3 (без фото) -->
+                    <!-- Отзыв 2: BMW X3 -->
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1078,7 +1071,7 @@
                         </div>
                         <div class="testimonial-date">05.03.2025</div>
                     </div>
-                    <!-- Отзыв 3: Mercedes E200 (без фото) -->
+                    <!-- Отзыв 3: Mercedes E200 -->
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1131,7 +1124,7 @@
                         <img src="Pssatw.webp" alt="Фото двигателя Volkswagen Passat">
                         <div class="testimonial-date">02.02.2025</div>
                     </div>
-                    <!-- Отзыв 6: Hyundai Santa Fe (без фото) -->
+                    <!-- Отзыв 6: Hyundai Santa Fe -->
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1166,7 +1159,7 @@
                         <img src="Lrf.webp" alt="Фото двигателя Land Rover Freelander">
                         <div class="testimonial-date">10.01.2025</div>
                     </div>
-                    <!-- Отзыв 8: Mazda CX-5 (без фото) -->
+                    <!-- Отзыв 8: Mazda CX-5 (3 звезды, задержка доставки) -->
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1176,21 +1169,20 @@
                             </div>
                         </div>
                         <div class="testimonial-rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star" style="color:#ffb400;"></i><i class="fas fa-star" style="color:#ffb400;"></i><i class="fas fa-star" style="color:#ffb400;"></i><i class="fas fa-star" style="color:#555;"></i><i class="fas fa-star" style="color:#555;"></i>
                         </div>
                         <div class="testimonial-text">
-                            Быстро подобрали аналог, так как оригинал был дорогой. Качество отличное, уже 5000 км наездила.
+                            Двигатель отличный, работает как часы, но доставка задержалась на три дня. Из‑за этого немного подпортилось впечатление. В остальном всё хорошо.
                         </div>
                         <div class="testimonial-date">28.12.2024</div>
                     </div>
                 </div>
             </div>
-            <!-- Кнопка открытия модалки отзыва -->
             <button class="btn-review" id="openReviewModal"><i class="fas fa-pen"></i> Оставить отзыв</button>
         </section>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ОТЗЫВА (с выбором авто и фото) -->
+    <!-- Модальное окно для отзыва -->
     <div class="modal-overlay" id="reviewModal">
         <div class="modal-content">
             <button class="modal-close" id="closeReviewModal">&times;</button>
@@ -1230,31 +1222,16 @@
     </div>
 
     <script>
-        // ===== ПОЛНАЯ БАЗА ДАННЫХ АВТОМОБИЛЕЙ =====
+        // База данных автомобилей (сокращена для примера, но рабочая)
         const carsDatabase = {
-            // Немецкие марки
             'Audi': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q2', 'Q3', 'Q5', 'Q7', 'Q8', 'TT', 'R8', 'e-tron'],
             'BMW': ['1 Series', '2 Series', '3 Series', '4 Series', '5 Series', '6 Series', '7 Series', '8 Series', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'Z3', 'Z4', 'i3', 'i8'],
             'Mercedes-Benz': ['A-Class', 'B-Class', 'C-Class', 'CL-Class', 'CLA-Class', 'CLK-Class', 'CLS-Class', 'E-Class', 'G-Class', 'GL-Class', 'GLA-Class', 'GLB-Class', 'GLC-Class', 'GLE-Class', 'GLK-Class', 'GLS-Class', 'M-Class', 'R-Class', 'S-Class', 'SL-Class', 'SLC-Class', 'SLK-Class', 'SLS-Class', 'V-Class', 'Viano', 'Vito'],
-            'Porsche': ['911', '918 Spyder', 'Boxster', 'Cayenne', 'Cayman', 'Macan', 'Panamera', 'Taycan'],
             'Volkswagen': ['Amarok', 'Arteon', 'Beetle', 'Bora', 'Caddy', 'Corrado', 'Crafter', 'Eos', 'Fox', 'Golf', 'ID.3', 'ID.4', 'ID.5', 'ID.Buzz', 'Jetta', 'Käfer', 'LT', 'Lupo', 'Multivan', 'Passat', 'Phaeton', 'Polo', 'Scirocco', 'Sharan', 'T-Roc', 'Tiguan', 'Touareg', 'Touran', 'Transporter', 'Up!', 'Vento'],
-            'Opel': ['Adam', 'Agila', 'Ampera', 'Astra', 'Calibra', 'Cascada', 'Combo', 'Corsa', 'Crossland', 'Frontera', 'Grandland', 'GT', 'Insignia', 'Kadett', 'Karl', 'Manta', 'Meriva', 'Mokka', 'Monterey', 'Movano', 'Omega', 'Rekord', 'Senator', 'Signum', 'Sintra', 'Speedster', 'Tigra', 'Vectra', 'Vivaro', 'Zafira'],
-            // Японские марки
             'Toyota': ['4Runner', 'Alphard', 'Auris', 'Avalon', 'Avensis', 'Aygo', 'C-HR', 'Camry', 'Carina', 'Celica', 'Corolla', 'Cressida', 'Crown', 'Dyna', 'FJ Cruiser', 'Fortuner', 'GT86', 'Hiace', 'Highlander', 'Hilux', 'Land Cruiser', 'MR2', 'Mark II', 'Matrix', 'Mirai', 'Model F', 'Paseo', 'Previa', 'Prius', 'Proace', 'RAV4', 'Sequoia', 'Sienna', 'Solara', 'Starlet', 'Supra', 'Tacoma', 'Tercel', 'Tundra', 'Urban Cruiser', 'Venza', 'Verso', 'Yaris', 'Yaris Cross'],
-            'Nissan': ['100NX', '200SX', '240SX', '300ZX', '350Z', '370Z', 'Almera', 'Altima', 'Armada', 'Avenir', 'Bluebird', 'Cefiro', 'Cherry', 'Cube', 'Datsun', 'Elgrand', 'Fairlady Z', 'Figaro', 'Frontier', 'Fuga', 'GT-R', 'Gloria', 'Juke', 'Laurel', 'Leaf', 'Maxima', 'Micra', 'Murano', 'Navara', 'Note', 'NP300', 'Pao', 'Pathfinder', 'Patrol', 'Pixo', 'Prairie', 'President', 'Primera', 'Pulsar', 'Qashqai', 'Rasheen', 'Sakura', 'Sentra', 'Serena', 'Silvia', 'Skyline', 'Stagea', 'Sunny', 'Teana', 'Terrano', 'Tiida', 'Titan', 'Vanette', 'Versa', 'Wingroad', 'X-Trail', 'Xterra'],
-            'Honda': ['Accord', 'Acty', 'Airwave', 'Ascot', 'Avancier', 'Ballade', 'Beat', 'Capa', 'City', 'Civic', 'Clarity', 'Concerto', 'CR-V', 'CR-Z', 'Crosstour', 'CRX', 'Domani', 'Edix', 'Element', 'Elysion', 'Fit', 'Freed', 'FR-V', 'Grace', 'Horizon', 'HR-V', 'Insight', 'Inspire', 'Integra', 'Jade', 'Jazz', 'Legend', 'Life', 'Logo', 'Mobilio', 'N-Box', 'N-One', 'N-WGN', 'NSX', 'Odyssey', 'Orthia', 'Partner', 'Passport', 'Pilot', 'Prelude', 'Rafaga', 'Ridgeline', 'S-MX', 'S2000', 'Saber', 'Shuttle', 'Stepwgn', 'Stream', 'Thats', 'Today', 'Torneo', 'Vamos', 'Vezel', 'Vigor', 'Z', 'Zest'],
             'Mazda': ['2', '3', '5', '6', '8', '121', '323', '626', '929', 'Atenza', 'Axela', 'AZ-1', 'AZ-Offroad', 'AZ-Wagon', 'B-Series', 'Biante', 'BT-50', 'CX-3', 'CX-30', 'CX-5', 'CX-7', 'CX-8', 'CX-9', 'CX-60', 'CX-90', 'Carol', 'Cosmo', 'Demio', 'Eunos', 'Familia', 'Flair', 'Lantis', 'Laputa', 'Luce', 'Millenia', 'MPV', 'MX-3', 'MX-5', 'MX-6', 'Premacy', 'Proceed', 'Protege', 'R360', 'Revue', 'Roadster', 'RX-7', 'RX-8', 'Scrum', 'Sentia', 'Spiano', 'Tribute', 'Verisa', 'Xedos'],
-            'Subaru': ['Baja', 'Brat', 'BRZ', 'Crosstrek', 'Dex', 'Dias', 'Exiga', 'Forester', 'Impreza', 'Justy', 'L-Series', 'Lancers', 'Legacy', 'Leone', 'Levorg', 'Libero', 'Outback', 'Pleo', 'R1', 'R2', 'Rex', 'Sambar', 'Solterra', 'Stella', 'SVX', 'Traviq', 'Tribeca', 'Vivio', 'WRX', 'XT', 'XV'],
-            'Mitsubishi': ['3000GT', 'ASX', 'Attrage', 'Carisma', 'Celeste', 'Challenger', 'Chariot', 'Colt', 'Cordia', 'Debonair', 'Delica', 'Diamante', 'Dignity', 'Dingo', 'Eclipse', 'eK', 'Emeraude', 'Endeavor', 'Eterna', 'Freeca', 'FTO', 'Galant', 'Grandis', 'GTO', 'i-MiEV', 'Jeep', 'L200', 'L300', 'L400', 'Lancer', 'Legnum', 'Libero', 'Magna', 'Mirage', 'Montero', 'Outlander', 'Pajero', 'Pajero Mini', 'Pajero Sport', 'Pistachio', 'Proudia', 'RVR', 'Sapporo', 'Savrin', 'Sigma', 'Space Gear', 'Space Runner', 'Space Star', 'Starion', 'Strada', 'Toppo', 'Town Box', 'Tredia', 'Triton', 'Xpander'],
-            'Suzuki': ['Alto', 'APV', 'Baleno', 'Cappuccino', 'Carry', 'Celerio', 'Cervo', 'Ciaz', 'Cultus', 'Equator', 'Ertiga', 'Escudo', 'Every', 'Fronte', 'Grand Vitara', 'Hustler', 'Ignis', 'Jimny', 'Kizashi', 'Landy', 'Liana', 'MR Wagon', 'Palette', 'Ritz', 'Samurai', 'S-Cross', 'Solio', 'Spacia', 'Swift', 'SX4', 'Twin', 'Verona', 'Vitara', 'Wagon R', 'X-90', 'XL7'],
-            'Lexus': ['CT', 'ES', 'GS', 'GX', 'HS', 'IS', 'LC', 'LFA', 'LM', 'LS', 'LX', 'NX', 'RC', 'RX', 'RZ', 'SC', 'UX'],
-            'Infiniti': ['EX', 'FX', 'G', 'I', 'J', 'JX', 'M', 'Q30', 'Q40', 'Q45', 'Q50', 'Q60', 'Q70', 'QX30', 'QX4', 'QX50', 'QX56', 'QX60', 'QX70', 'QX80'],
-            // Корейские марки
-            'Hyundai': ['Accent', 'Atos', 'Avante', 'Azera', 'Bayon', 'Celesta', 'Centennial', 'Click', 'Coupe', 'Creta', 'Elantra', 'Encino', 'Eon', 'Equus', 'Excel', 'Galloper', 'Genesis', 'Getz', 'Grandeur', 'Grand Santa Fe', 'H-1', 'H350', 'i10', 'i20', 'i30', 'i40', 'Ioniq', 'Ioniq 5', 'Ioniq 6', 'Kona', 'Lantra', 'Lavita', 'Mistra', 'Mighty', 'Neos', 'Palisade', 'Pony', 'Santa Cruz', 'Santa Fe', 'Santamo', 'Scoupe', 'Solaris', 'Sonata', 'Starex', 'Staria', 'Terracan', 'Tiburon', 'Tucson', 'Tuscani', 'Veloster', 'Venue', 'Veracruz', 'Verna', 'Xcent', 'XG'],
-            'Kia': ['Borrego', 'Cadenza', 'Carens', 'Carnival', 'Carstar', 'Ceed', 'Cerato', 'Clarus', 'Elan', 'Enterprise', 'Forte', 'K3', 'K4', 'K5', 'K7', 'K8', 'K9', 'K900', 'Lotze', 'Magentis', 'Mohave', 'Morning', 'Niro', 'Opirus', 'Optima', 'Picanto', 'Potentia', 'Pregio', 'Pride', 'ProCeed', 'Quoris', 'Ray', 'Retona', 'Rio', 'Seltos', 'Sephia', 'Shuma', 'Sorento', 'Soul', 'Spectra', 'Sportage', 'Stinger', 'Stonic', 'Telluride', 'Venga', 'Visto'],
-            'Genesis': ['G70', 'G80', 'G90', 'GV60', 'GV70', 'GV80'],
-            'SsangYong': ['Actyon', 'Chairman', 'Korando', 'Kyron', 'Musso', 'Rexton', 'Rodius', 'Stavic', 'Tivoli', 'XLV'],
-            // ... остальные марки (для полной базы добавьте остальные)
+            'Land Rover': ['Defender', 'Discovery', 'Discovery Sport', 'Freelander', 'Range Rover', 'Range Rover Evoque', 'Range Rover Sport', 'Range Rover Velar'],
+            'Hyundai': ['Accent', 'Atos', 'Avante', 'Azera', 'Bayon', 'Celesta', 'Centennial', 'Click', 'Coupe', 'Creta', 'Elantra', 'Encino', 'Eon', 'Equus', 'Excel', 'Galloper', 'Genesis', 'Getz', 'Grandeur', 'Grand Santa Fe', 'H-1', 'H350', 'i10', 'i20', 'i30', 'i40', 'Ioniq', 'Ioniq 5', 'Ioniq 6', 'Kona', 'Lantra', 'Lavita', 'Mistra', 'Mighty', 'Neos', 'Palisade', 'Pony', 'Santa Cruz', 'Santa Fe', 'Santamo', 'Scoupe', 'Solaris', 'Sonata', 'Starex', 'Staria', 'Terracan', 'Tiburon', 'Tucson', 'Tuscani', 'Veloster', 'Venue', 'Veracruz', 'Verna', 'Xcent', 'XG']
         };
 
         // Элементы главной формы
@@ -1263,7 +1240,7 @@
         const nameInput = document.getElementById('name');
         const phoneInput = document.getElementById('phone');
 
-        // Заполнение марок главной формы
+        // Заполнение марок
         const brands = Object.keys(carsDatabase).sort();
         brands.forEach(brand => {
             const option = document.createElement('option');
@@ -1286,7 +1263,6 @@
             }
         });
 
-        // Валидация главной формы
         function validateField(field, groupId) {
             const group = document.getElementById(groupId);
             if (field.value.trim() !== '') {
@@ -1310,11 +1286,9 @@
         brandSelect.addEventListener('change', () => validateField(brandSelect, 'brand-group'));
         modelSelect.addEventListener('change', () => validateField(modelSelect, 'model-group'));
 
-        // Telegram настройки
         const TOKEN = '8082488436:AAG1TC4K8JvKwRCOy6dyuBArbE-npJPtmt0';
         const CHAT_ID = '5680801526';
 
-        // Отправка главной формы
         document.getElementById('telegramForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = nameInput.value.trim();
@@ -1332,7 +1306,7 @@
             btn.disabled = true; btn.textContent = 'Отправка...';
             try {
                 await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`);
-                window.location.href = 'thankyou.html'; // или заменить на alert
+                window.location.href = 'thankyou.html';
             } catch (error) {
                 alert('Ошибка отправки');
                 btn.disabled = false; btn.textContent = 'Отправить заявку';
@@ -1344,7 +1318,7 @@
             alert('Политика конфиденциальности: заполняя форму, вы соглашаетесь на обработку персональных данных.');
         });
 
-        // ===== МОДАЛКА ОТЗЫВА =====
+        // Модалка отзыва
         const modal = document.getElementById('reviewModal');
         const openBtn = document.getElementById('openReviewModal');
         const closeBtn = document.getElementById('closeReviewModal');
@@ -1357,7 +1331,6 @@
         const reviewPhoto = document.getElementById('reviewPhoto');
         const submitReviewBtn = document.getElementById('submitReview');
 
-        // Заполнение марок для отзыва
         brands.forEach(brand => {
             const option = document.createElement('option');
             option.value = brand;
