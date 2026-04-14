@@ -28,7 +28,6 @@
     <!-- /Yandex.Metrika counter -->
     
     <style>
-        /* ... весь ваш стиль (без изменений) ... */
         * {
             margin: 0;
             padding: 0;
@@ -95,7 +94,7 @@
         /* Логотип и контакты в одной строке */
         .logo-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             gap: 20px;
             margin-bottom: 30px;
@@ -194,98 +193,96 @@
             color: #c0c0c0;
         }
 
-        /* Блок контактов вверху */
+        /* Блок контактов вверху — без фона и обводки */
         .top-contacts {
             display: flex;
             align-items: center;
             gap: 15px;
-            background: rgba(18,22,30,0.7);
-            backdrop-filter: blur(10px);
             padding: 8px 20px;
             border-radius: 60px;
-            border: 1px solid rgba(76,175,80,0.2);
             transition: all 0.3s;
+            background: transparent;
+            backdrop-filter: none;
+            border: none;
         }
-        .top-contacts:hover {
-            border-color: #4caf50;
-        }
-        .phone-number {
-            font-size: 1.2rem;
-            font-weight: 600;
+        .phone-number-large {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
             color: #fff;
             text-decoration: none;
             letter-spacing: 0.5px;
             transition: color 0.3s;
             white-space: nowrap;
         }
-        .phone-number:hover {
+        .phone-number-large i {
+            margin-right: 10px;
+            font-size: 2rem;
             color: #4caf50;
+            vertical-align: middle;
         }
-        .call-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #2e7d32, #1b5e20);
-            border: none;
-            padding: 8px 18px;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .call-btn i {
-            font-size: 1rem;
-        }
-        .call-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46,125,50,0.4);
+        .phone-number-large:hover {
+            color: #4caf50;
         }
 
         /* Главный экран */
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 20px;
+        .hero {
+            margin-top: 10px;
         }
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+        .hero-slogan {
+            text-align: center;
+            margin: 30px 0 40px;
         }
-        .hero-text p {
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            line-height: 1.6;
-            margin-bottom: 30px;
+        .hero-slogan p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.5;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .tech-badge {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+        .hero-slogan .highlight {
+            color: #4caf50;
+            font-weight: 700;
         }
-        .tech-badge-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 18px;
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(76,175,80,0.2);
+        .call-btn-hero {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 20px;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
             border-radius: 60px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
             transition: all 0.3s;
-            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            animation: btnPulse 2s infinite;
         }
-        .tech-badge-item:hover {
-            border-color: #4caf50;
-            transform: translateY(-3px);
+        .call-btn-hero i {
+            margin-right: 10px;
+        }
+        .call-btn-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(46,125,50,0.5);
+            background: linear-gradient(135deg, #3c8d40, #2e7d32);
+        }
+        @keyframes btnPulse {
+            0% { box-shadow: 0 8px 20px rgba(0,0,0,0.3), 0 0 0 0 rgba(76,175,80,0.7); }
+            70% { box-shadow: 0 8px 20px rgba(0,0,0,0.3), 0 0 0 15px rgba(76,175,80,0); }
+            100% { box-shadow: 0 8px 20px rgba(0,0,0,0.3), 0 0 0 0 rgba(76,175,80,0); }
         }
 
-        /* Форма */
+        .hero-content {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
         .hero-form {
+            max-width: 950px; /* ещё шире для ПК */
+            width: 100%;
             background: rgba(18,22,30,0.7);
             backdrop-filter: blur(20px);
             padding: 30px;
@@ -293,6 +290,7 @@
             border: 1px solid rgba(76,175,80,0.2);
             transition: all 0.3s;
             text-align: center;
+            margin: 0 auto;
         }
         .hero-form h3 {
             font-size: clamp(1.5rem, 5vw, 2rem);
@@ -313,6 +311,12 @@
             color: #fff;
             transition: all 0.3s;
         }
+        .form-group.valid input,
+        .form-group.valid select {
+            border-color: #4caf50;
+            box-shadow: 0 0 10px rgba(76,175,80,0.3);
+            background: rgba(20,40,25,0.7);
+        }
         .btn {
             width: 100%;
             padding: 14px;
@@ -323,6 +327,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            color: white;
         }
         .btn:hover {
             transform: translateY(-3px);
@@ -532,57 +537,50 @@
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            gap: 30px;
             flex-wrap: wrap;
         }
-        .social-icon-link {
-            display: inline-flex;
+        .social-icon-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .social-icon-item:hover {
+            transform: translateY(-3px);
+        }
+        .social-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 0 20px;
-            height: 48px;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            font-weight: 500;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            overflow: hidden;
         }
-        .social-icon-link.max {
-            background: linear-gradient(135deg, #f5af19, #f12711);
-            border: 1px solid rgba(255,200,100,0.5);
-            color: #fff;
+        .social-icon-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .social-icon-link.max i {
-            font-size: 20px;
-            color: #fff;
+        .social-icon-circle i {
+            font-size: 30px;
+            color: white;
         }
-        .social-icon-link.max span {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #fff;
+        .social-icon-item.telegram .social-icon-circle {
+            background: white;
         }
-        .social-icon-link.max:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(241,39,17,0.4);
+        .social-icon-item.telegram .social-icon-circle i {
+            color: #26A5E4;
         }
-        .social-icon-link.telegram {
-            background: #26A5E4;
-            border: 1px solid rgba(38,165,228,0.5);
-            color: #fff;
-        }
-        .social-icon-link.telegram i {
-            font-size: 20px;
-            color: #fff;
-        }
-        .social-icon-link.telegram span {
-            font-size: 0.9rem;
+        .social-icon-item span {
+            font-size: 1rem;
             font-weight: 500;
             color: #fff;
-        }
-        .social-icon-link.telegram:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(38,165,228,0.4);
         }
 
         /* Модальное окно для отзыва */
@@ -629,30 +627,100 @@
         .social-toggle {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #2e7d32, #1b5e20);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 15px rgba(76,175,80,0.5);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
             transition: all 0.3s ease;
-            border: 2px solid rgba(76,175,80,0.6);
-            animation: pulseGlowBig 2s infinite;
+            border: none;
+            background: transparent;
+            position: relative;
         }
-        @keyframes pulseGlowBig {
-            0% { box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 0 0 rgba(76,175,80,0.7); }
-            70% { box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 0 12px rgba(76,175,80,0); }
-            100% { box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 0 0 rgba(76,175,80,0); }
+        .social-toggle .icon-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: opacity 0.2s;
         }
-        .social-toggle i {
-            font-size: 36px;
+        .social-toggle .default-icons {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .social-toggle .close-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s, transform 0.3s;
+            font-size: 45px;
             color: white;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .social-toggle.open .default-icons {
+            opacity: 0;
+        }
+        .social-toggle.open .close-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .toggle-icon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .toggle-icon.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .toggle-icon.phone {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        }
+        .toggle-icon.phone i {
+            font-size: 42px;
+            color: white;
+        }
+        .toggle-icon.telegram {
+            background: white;
+        }
+        .toggle-icon.telegram i {
+            font-size: 42px;
+            color: #26A5E4;
+        }
+        .toggle-icon.max {
+            background: transparent;
+            box-shadow: none;
+        }
+        .toggle-icon.max img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
         }
         .social-toggle:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(46,125,50,0.6);
         }
         .social-links {
             position: absolute;
@@ -674,61 +742,45 @@
         .social-link {
             width: 60px;
             height: 60px;
-            background: rgba(18,24,32,0.95);
-            backdrop-filter: blur(10px);
             border-radius: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s;
-            border: 1px solid rgba(76,175,80,0.4);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            gap: 4px;
+            background: transparent;
+            border: none;
         }
-        .social-link i {
-            font-size: 28px;
-        }
-        .social-link span {
-            font-size: 10px;
-            font-weight: 500;
-            color: #fff;
-            letter-spacing: 0.5px;
+        .social-link i, .social-link img {
+            font-size: 30px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
         .social-link.max {
-            background: linear-gradient(135deg, #f5af19, #f12711);
-            border: none;
+            background: transparent;
         }
-        .social-link.max i {
-            color: #fff;
-        }
-        .social-link.max:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(241,39,17,0.5);
+        .social-link.max img {
+            border-radius: 50%;
         }
         .social-link.telegram {
-            background: #26A5E4;
-            border: none;
+            background: white;
         }
         .social-link.telegram i {
-            color: #fff;
+            color: #26A5E4;
+            font-size: 32px;
         }
-        .social-link.telegram:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(38,165,228,0.5);
-        }
-        /* Стиль для звонка в плавающем меню */
         .social-link.phone {
             background: #2e7d32;
-            border: none;
         }
         .social-link.phone i {
             color: #fff;
+            font-size: 32px;
         }
-        .social-link.phone:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(46,125,50,0.5);
+        .social-link span {
+            display: none;
         }
 
         /* Адаптация */
@@ -739,15 +791,11 @@
         }
         @media (max-width: 992px) {
             .hero-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .hero-text {
-                text-align: center;
+                flex-direction: column;
                 align-items: center;
             }
-            .tech-badge {
-                justify-content: center;
+            .hero-slogan p {
+                font-size: 1.3rem;
             }
             .logo-container {
                 flex-direction: column;
@@ -759,6 +807,13 @@
             }
             .top-contacts {
                 margin-top: 10px;
+            }
+            .phone-number-large {
+                font-size: 1.8rem;
+            }
+            .call-btn-hero {
+                font-size: 1.1rem;
+                padding: 14px 40px;
             }
         }
         @media (max-width: 768px) {
@@ -779,39 +834,40 @@
                 width: 65px;
                 height: 65px;
             }
-            .social-toggle i {
-                font-size: 28px;
+            .toggle-icon i {
+                font-size: 34px;
+            }
+            .toggle-icon.max img {
+                width: 65px;
+                height: 65px;
             }
             .social-link {
                 width: 50px;
                 height: 50px;
             }
-            .social-link i {
-                font-size: 24px;
+            .social-link i, .social-link img {
+                font-size: 26px;
             }
-            .social-link span {
-                font-size: 8px;
-            }
-            .social-icon-link {
+            .social-icon-circle {
+                width: 42px;
                 height: 42px;
-                padding: 0 16px;
             }
-            .social-icon-link i {
-                font-size: 18px;
+            .social-icon-circle img {
+                width: 42px;
+                height: 42px;
             }
-            .social-icon-link span {
-                font-size: 0.8rem;
+            .social-icon-circle i {
+                font-size: 24px;
             }
             .top-contacts {
                 padding: 6px 16px;
                 gap: 10px;
             }
-            .phone-number {
-                font-size: 1rem;
+            .phone-number-large {
+                font-size: 1.5rem;
             }
-            .call-btn {
-                padding: 6px 14px;
-                font-size: 0.8rem;
+            .social-toggle .close-icon {
+                font-size: 38px;
             }
         }
         @media (max-width: 480px) {
@@ -823,23 +879,27 @@
                 width: 55px;
                 height: 55px;
             }
-            .social-toggle i {
-                font-size: 24px;
+            .toggle-icon i {
+                font-size: 28px;
+            }
+            .toggle-icon.max img {
+                width: 55px;
+                height: 55px;
             }
             .social-link {
                 width: 45px;
                 height: 45px;
             }
-            .social-link i {
-                font-size: 20px;
-            }
-            .social-link span {
-                font-size: 7px;
+            .social-link i, .social-link img {
+                font-size: 22px;
             }
             .top-contacts {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 12px;
+            }
+            .social-toggle .close-icon {
+                font-size: 32px;
             }
         }
     </style>
@@ -859,22 +919,19 @@
             </div>
         </div>
         <div class="top-contacts">
-            <a href="tel:+79303453011" class="phone-number"><i class="fas fa-phone-alt"></i> +7 (930) 345-30-11</a>
-            <a href="tel:+79303453011" class="call-btn"><i class="fas fa-phone"></i> Позвонить</a>
+            <a href="tel:+79303453011" class="phone-number-large"><i class="fas fa-phone-alt"></i> +7 (930) 345-30-11</a>
         </div>
+    </div>
+
+    <!-- Слоган по центру -->
+    <div class="hero-slogan">
+        <p>Профессиональный подбор <span class="highlight">контрактных двигателей</span> премиум-класса. Каждый мотор проходит полную диагностику с видеоотчетом и пакетом документов.</p>
     </div>
 
     <!-- Главный экран -->
     <section class="hero">
+        <a href="tel:+79303453011" class="call-btn-hero"><i class="fas fa-phone-alt"></i> Позвонить нам</a>
         <div class="hero-content">
-            <div class="hero-text">
-                <p>Профессиональный подбор контрактных двигателей премиум-класса. Каждый мотор проходит полную диагностику с видеоотчетом и пакетом документов.</p>
-                <div class="tech-badge">
-                    <div class="tech-badge-item"><i class="fas fa-video"></i><span>Видеоотчет</span></div>
-                    <div class="tech-badge-item"><i class="fas fa-file-pdf"></i><span>Документы ГИБДД</span></div>
-                    <div class="tech-badge-item"><i class="fas fa-shield-alt"></i><span>Гарантия</span></div>
-                </div>
-            </div>
             <div class="hero-form">
                 <h3>Оставить заявку на подбор</h3>
                 <form id="telegramForm">
@@ -939,7 +996,7 @@
             </div>
             <div class="advantage-card">
                 <div class="single-docs">
-                    <div class="service-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
                     <h3>Документы для ГИБДД</h3>
                     <p>Полный пакет для легальной установки</p>
                     <ul>
@@ -957,7 +1014,7 @@
         <h2>Отзывы наших клиентов</h2>
         <div class="testimonials-carousel">
             <div class="carousel-track">
-                <!-- Отзыв 1: Audi Q5 с фото -->
+                <!-- Отзывы без изменений -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -968,7 +1025,6 @@
                     <img src="engine_audi_q5.webp" alt="Фото двигателя Audi Q5">
                     <div class="testimonial-date" style="color:#4caf50; font-size:0.75rem; text-align:right; margin-top:10px;">12.03.2025</div>
                 </div>
-                <!-- Отзыв 2: BMW X3 -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -978,7 +1034,6 @@
                     <div class="testimonial-text">Очень довольна сервисом. Предоставили полный пакет документов для ГИБДД, двигатель в идеальном состоянии.</div>
                     <div class="testimonial-date" style="color:#4caf50; font-size:0.75rem; text-align:right; margin-top:10px;">05.03.2025</div>
                 </div>
-                <!-- Отзыв 3: Mercedes E200 -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -988,7 +1043,6 @@
                     <div class="testimonial-text">Подобрали мотор за один день, доставили быстро. Компрессия в норме, масло не ест. Буду рекомендовать.</div>
                     <div class="testimonial-date" style="color:#4caf50; font-size:0.75rem; text-align:right; margin-top:10px;">28.02.2025</div>
                 </div>
-                <!-- Отзыв 4: Toyota Camry с фото -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -999,7 +1053,6 @@
                     <img src="Tc.webp" alt="Фото двигателя Toyota Camry">
                     <div class="testimonial-date" style="color:#4caf50; font-size:0.75rem; text-align:right; margin-top:10px;">15.02.2025</div>
                 </div>
-                <!-- Отзыв 5: Volkswagen Passat с фото -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1010,7 +1063,6 @@
                     <img src="Pssatw.webp" alt="Фото двигателя Volkswagen Passat">
                     <div class="testimonial-date" style="color:#4caf50; font-size:0.75rem; text-align:right; margin-top:10px;">02.02.2025</div>
                 </div>
-                <!-- Отзыв 6: Hyundai Santa Fe -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1020,7 +1072,6 @@
                     <div class="testimonial-text">Хороший выбор контрактных моторов. Цены адекватные, дают гарантию. Рекомендую.</div>
                     <div class="testimonial-date" style="color:#4caf50; font-size:0.75rem; text-align:right; margin-top:10px;">20.01.2025</div>
                 </div>
-                <!-- Отзыв 7: Land Rover Freelander с фото -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1031,7 +1082,6 @@
                     <img src="Lrf.webp" alt="Фото двигателя Land Rover Freelander">
                     <div class="testimonial-date" style="color:#4caf50; font-size:0.75rem; text-align:right; margin-top:10px;">10.01.2025</div>
                 </div>
-                <!-- Отзыв 8: Mazda CX-5 -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
@@ -1049,12 +1099,16 @@
         <div class="social-section">
             <div class="social-title">Мы в соц сетях</div>
             <div class="social-icons">
-                <a href="https://max.ru/join/0SYWhi5pG8mgxrswDAFLj6l28jZN4G2woco1oPk5OLw" class="social-icon-link max" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-star"></i>
+                <a href="https://max.ru/join/0SYWhi5pG8mgxrswDAFLj6l28jZN4G2woco1oPk5OLw" class="social-icon-item max" target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon-circle" style="background: transparent; box-shadow: none;">
+                        <img src="max-icon.webp" alt="Max">
+                    </div>
                     <span>Max</span>
                 </a>
-                <a href="https://t.me/tehno_agrigad" class="social-icon-link telegram" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-telegram-plane"></i>
+                <a href="https://t.me/tehno_agrigad" class="social-icon-item telegram" target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon-circle">
+                        <i class="fab fa-telegram-plane"></i>
+                    </div>
                     <span>Telegram</span>
                 </a>
             </div>
@@ -1062,23 +1116,27 @@
     </section>
 </div>
 
-<!-- ПЛАВАЮЩАЯ КНОПКА -->
+<!-- ПЛАВАЮЩАЯ КНОПКА С АНИМАЦИЕЙ СМЕНЫ ИКОНОК -->
 <div class="floating-social">
     <div class="social-toggle" id="socialToggle">
-        <i class="fas fa-comments"></i>
+        <div class="default-icons">
+            <div class="toggle-icon phone active" id="iconPhone"><i class="fas fa-phone-alt"></i></div>
+            <div class="toggle-icon telegram" id="iconTelegram"><i class="fab fa-telegram-plane"></i></div>
+            <div class="toggle-icon max" id="iconMax"><img src="max-icon.webp" alt="Max"></div>
+        </div>
+        <div class="close-icon">
+            <i class="fas fa-times"></i>
+        </div>
     </div>
     <div class="social-links" id="socialLinks">
         <a href="tel:+79303453011" class="social-link phone" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-phone-alt"></i>
-            <span>Звонок</span>
         </a>
         <a href="https://max.ru/join/0SYWhi5pG8mgxrswDAFLj6l28jZN4G2woco1oPk5OLw" class="social-link max" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-star"></i>
-            <span>Max</span>
+            <img src="max-icon.webp" alt="Max">
         </a>
         <a href="https://t.me/tehno_agrigad" class="social-link telegram" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-telegram-plane"></i>
-            <span>Telegram</span>
         </a>
     </div>
 </div>
@@ -1164,12 +1222,82 @@
         }
     });
 
+    // Исправленная маска телефона с корректной обработкой backspace/delete
+    function formatPhoneInput(value) {
+        const digits = value.replace(/\D/g, '');
+        if (digits.length === 0) return '+7 ';
+        let res = '+7 ';
+        if (digits.length > 1) res += '(' + digits.substring(1, 4);
+        if (digits.length >= 4) res += ') ' + digits.substring(4, 7);
+        if (digits.length >= 7) res += '-' + digits.substring(7, 9);
+        if (digits.length >= 9) res += '-' + digits.substring(9, 11);
+        return res;
+    }
+
+    phoneInput.addEventListener('input', function(e) {
+        let input = this;
+        let value = input.value;
+        let digits = value.replace(/\D/g, '');
+        if (!digits.startsWith('7') && digits.length > 0) {
+            digits = '7' + digits;
+        }
+        if (digits.length > 11) digits = digits.slice(0, 11);
+        let formatted = formatPhoneInput(digits);
+        input.value = formatted;
+        validateField(phoneInput, 'phone-group');
+    });
+
+    phoneInput.addEventListener('keydown', function(e) {
+        let key = e.key;
+        let input = this;
+        let start = input.selectionStart;
+        let end = input.selectionEnd;
+        let value = input.value;
+        let digits = value.replace(/\D/g, '');
+        if (key === 'Backspace' || key === 'Delete') {
+            if (start === end) {
+                if (key === 'Backspace' && start > 0) {
+                    let charBefore = value[start-1];
+                    if (charBefore === '-' || charBefore === ')' || charBefore === '(' || charBefore === ' ') {
+                        e.preventDefault();
+                        let newDigits = digits;
+                        if (digits.length > 1) {
+                            let pos = 0;
+                            for (let i=0; i<start; i++) if (/\d/.test(value[i])) pos++;
+                            let arr = newDigits.split('');
+                            arr.splice(pos-1, 1);
+                            newDigits = arr.join('');
+                        } else {
+                            newDigits = '';
+                        }
+                        input.value = formatPhoneInput(newDigits);
+                        validateField(phoneInput, 'phone-group');
+                        let newPos = 0;
+                        let tempVal = input.value;
+                        for (let i=0; i<tempVal.length; i++) {
+                            if (/\d/.test(tempVal[i])) {
+                                newPos = i+1;
+                            }
+                        }
+                        input.setSelectionRange(newPos, newPos);
+                    }
+                }
+            }
+        }
+    });
+
+    phoneInput.addEventListener('focus', function() {
+        if (this.value === '') {
+            this.value = '+7 ';
+        }
+    });
+
     function validateField(field, groupId) {
         const group = document.getElementById(groupId);
         if (field.value.trim() !== '') {
             if (field.id === 'phone') {
                 let digits = field.value.replace(/\D/g, '');
-                if (digits.length >= 10) group.classList.add('valid');
+                if (digits.length >= 11) group.classList.add('valid');
                 else group.classList.remove('valid');
             } else if (field.id === 'name') {
                 if (field.value.trim().length >= 2) group.classList.add('valid');
@@ -1179,15 +1307,14 @@
             }
         } else group.classList.remove('valid');
     }
+
     nameInput.addEventListener('input', () => validateField(nameInput, 'name-group'));
-    phoneInput.addEventListener('input', () => validateField(phoneInput, 'phone-group'));
     brandSelect.addEventListener('change', () => validateField(brandSelect, 'brand-group'));
     modelSelect.addEventListener('change', () => validateField(modelSelect, 'model-group'));
 
     const TOKEN = '8082488436:AAG1TC4K8JvKwRCOy6dyuBArbE-npJPtmt0';
     const CHAT_ID = '-1003740634850';
 
-    // ОТПРАВКА ФОРМЫ С РЕДИРЕКТОМ НА thankyou.html
     document.getElementById('telegramForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         const name = nameInput.value.trim();
@@ -1196,17 +1323,30 @@
         const model = modelSelect.value;
         if (!name || name.length < 2) { alert('Введите имя'); nameInput.focus(); return; }
         const phoneDigits = phone.replace(/\D/g, '');
-        if (!phone || phoneDigits.length < 10) { alert('Введите корректный телефон'); phoneInput.focus(); return; }
+        if (!phone || phoneDigits.length < 11) { alert('Введите корректный телефон (11 цифр)'); phoneInput.focus(); return; }
         if (!brand) { alert('Выберите марку'); brandSelect.focus(); return; }
         if (!model) { alert('Выберите модель'); modelSelect.focus(); return; }
-        const text = `🔔 НОВАЯ ЗАЯВКА%0A%0A👤 Имя: ${name}%0A📞 Телефон: ${phoneDigits}%0A🚗 Марка: ${brand}%0A🔧 Модель: ${model}`;
+
         const btn = e.target.querySelector('button');
-        btn.disabled = true; btn.textContent = 'Отправка...';
+        btn.disabled = true;
+        btn.textContent = 'Отправка...';
+
         try {
-            await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`);
-            window.location.href = 'thankyou.html';
+            const response = await fetch('/telegram-proxy.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, phone: phoneDigits, brand, model })
+            });
+            const result = await response.json();
+            if (response.ok && result.success) {
+                window.location.href = 'thankyou.html';
+            } else {
+                alert('Ошибка: ' + (result.error || 'Не удалось отправить заявку'));
+                btn.disabled = false;
+                btn.textContent = 'Отправить заявку';
+            }
         } catch (error) {
-            alert('Ошибка отправки. Попробуйте позже.');
+            alert('Ошибка сети. Проверьте подключение к интернету.');
             btn.disabled = false;
             btn.textContent = 'Отправить заявку';
         }
@@ -1226,20 +1366,39 @@
         isOpen = !isOpen;
         if (isOpen) {
             socialLinksElem.classList.add('active');
-            toggleBtn.style.transform = 'rotate(45deg)';
+            toggleBtn.classList.add('open');
         } else {
             socialLinksElem.classList.remove('active');
-            toggleBtn.style.transform = 'rotate(0deg)';
+            toggleBtn.classList.remove('open');
         }
     });
 
     document.addEventListener('click', (e) => {
         if (!toggleBtn.contains(e.target) && !socialLinksElem.contains(e.target) && isOpen) {
             socialLinksElem.classList.remove('active');
-            toggleBtn.style.transform = 'rotate(0deg)';
+            toggleBtn.classList.remove('open');
             isOpen = false;
         }
     });
+
+    const icons = {
+        phone: document.getElementById('iconPhone'),
+        telegram: document.getElementById('iconTelegram'),
+        max: document.getElementById('iconMax')
+    };
+    const iconKeys = ['phone', 'telegram', 'max'];
+    let currentIconIndex = 0;
+
+    function rotateIcon() {
+        // Не переключаем, если меню открыто (показываем крестик)
+        if (isOpen) return;
+        const current = icons[iconKeys[currentIconIndex]];
+        current.classList.remove('active');
+        currentIconIndex = (currentIconIndex + 1) % iconKeys.length;
+        const next = icons[iconKeys[currentIconIndex]];
+        next.classList.add('active');
+    }
+    setInterval(rotateIcon, 2500);
 
     // === МОДАЛКА ОТЗЫВА ===
     const modal = document.getElementById('reviewModal');
